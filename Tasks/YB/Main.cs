@@ -1,16 +1,16 @@
-﻿using MHXYWF.Utility;
+﻿using MHXYSupport.Utility;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 
-namespace MHXYWF.Tasks.YB;
+namespace MHXYSupport.Tasks.YB;
 
 public class Main : IMain
 {
     public async Task Run(Form1 form, Process process)
     {
         form.SetTextBoxMessage("押镖 开始");
-        string imgPath = MHXYWF.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
+        string imgPath = MHXYSupport.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
 
         bool success = Utility.Action.ClickTargetButton(process, imgPath, Tasks.Const.HD, Tasks.Const.HDOffset);
         if (!success) return;

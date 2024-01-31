@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace MHXYWF.Extensions;
+namespace MHXYSupport.Extensions;
 
 public static class EnumExtension
 {

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Drawing.Imaging;
 
-namespace MHXYWF.Utility;
+namespace MHXYSupport.Utility;
 
 public class Action
 {

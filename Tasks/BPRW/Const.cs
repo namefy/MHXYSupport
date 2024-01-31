@@ -1,4 +1,4 @@
-﻿namespace MHXYWF.Tasks.BPRW;
+﻿namespace MHXYSupport.Tasks.BPRW;
 
 public class Const
 {

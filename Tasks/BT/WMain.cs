@@ -1,8 +1,8 @@
-﻿using MHXYWF.Utility;
+﻿using MHXYSupport.Utility;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 
-namespace MHXYWF.Tasks.BT;
+namespace MHXYSupport.Tasks.BT;
 
 /// <summary>
 /// 挖宝图
@@ -11,7 +11,7 @@ public class WMain : IMain
 {
     public async Task Run(Form1 form, Process process)
     {
-        string imgPath = MHXYWF.Const.ScreenshotDirectory + $"{process.Id}_{Const.DScreenshotName}";
+        string imgPath = MHXYSupport.Const.ScreenshotDirectory + $"{process.Id}_{Const.DScreenshotName}";
 
         form.SetTextBoxMessage("挖宝图 开始");
         await Task.Run(() =>

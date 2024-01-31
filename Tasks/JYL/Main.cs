@@ -1,24 +1,24 @@
-﻿using MHXYWF.Utility;
+﻿using MHXYSupport.Utility;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 
-namespace MHXYWF.Tasks.JYL;
+namespace MHXYSupport.Tasks.JYL;
 
 public class Main : IMain
 {
     public async Task Run(Form1 form, Process process)
     {
-        string imgPath = MHXYWF.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
+        string imgPath = MHXYSupport.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
         bool success = false;
         #region 领取
-        //bool success = Utility.Action.ClickTargetButton(MHXYWF.Const.ProgressName, imgPath, Tasks.Const.HD, Tasks.Const.HDOffset);
+        //bool success = Utility.Action.ClickTargetButton(MHXYSupport.Const.ProgressName, imgPath, Tasks.Const.HD, Tasks.Const.HDOffset);
         //if (!success) return;
-        //success = Utility.Action.ClickTargetButton(MHXYWF.Const.ProgressName, imgPath, Tasks.Const.JYRWL, Tasks.Const.JYRWLOffset);
+        //success = Utility.Action.ClickTargetButton(MHXYSupport.Const.ProgressName, imgPath, Tasks.Const.JYRWL, Tasks.Const.JYRWLOffset);
         //if (!success) return;
-        //success = Utility.Action.ClickTargetButton(MHXYWF.Const.ProgressName, imgPath, Const.JYRWL);
+        //success = Utility.Action.ClickTargetButton(MHXYSupport.Const.ProgressName, imgPath, Const.JYRWL);
         //if (!success) return;
-        //success = Utility.Action.ClickTargetButton(MHXYWF.Const.ProgressName, imgPath, Const.LQJYRWL);
+        //success = Utility.Action.ClickTargetButton(MHXYSupport.Const.ProgressName, imgPath, Const.LQJYRWL);
         //if (!success) return;
         #endregion
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MHXYWF;
+namespace MHXYSupport;
 
 public enum MHTask
 {

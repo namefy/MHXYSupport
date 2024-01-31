@@ -1,6 +1,6 @@
-﻿using MHXYWF.Extensions;
+﻿using MHXYSupport.Extensions;
 
-namespace MHXYWF
+namespace MHXYSupport
 {
     partial class Form1
     {

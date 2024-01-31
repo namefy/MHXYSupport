@@ -1,9 +1,9 @@
-using MHXYWF.Tasks;
-using MHXYWF.Utility;
+using MHXYSupport.Tasks;
+using MHXYSupport.Utility;
 using System.Diagnostics;
-using MHXYWF.Extensions;
+using MHXYSupport.Extensions;
 
-namespace MHXYWF;
+namespace MHXYSupport;
 
 public partial class Form1 : Form
 {
@@ -31,16 +31,16 @@ public partial class Form1 : Form
 
     private static Tasks.IMain CreateTaskInstance(string task)
     {
-        if (task == MHTask.SM.GetDescription()) return new MHXYWF.Tasks.SM.Main();
-        if (task == MHTask.DBT.GetDescription()) return new MHXYWF.Tasks.BT.DMain();
-        if (task == MHTask.WBT.GetDescription()) return new MHXYWF.Tasks.BT.WMain();
-        if (task == MHTask.YB.GetDescription()) return new MHXYWF.Tasks.YB.Main();
-        if (task == MHTask.ZG.GetDescription()) return new MHXYWF.Tasks.ZG.Main();
-        if (task == MHTask.JYL.GetDescription()) return new MHXYWF.Tasks.JYL.Main();
-        if (task == MHTask.BPRW.GetDescription()) return new MHXYWF.Tasks.BPRW.Main();
-        if (task == MHTask.SJQY.GetDescription()) return new MHXYWF.Tasks.SJQY.Main();
-        if (task == MHTask.JJC.GetDescription()) return new MHXYWF.Tasks.JJC.Main();
-        if (task == MHTask.MJXY.GetDescription()) return new MHXYWF.Tasks.MJXY.Main();
+        if (task == MHTask.SM.GetDescription()) return new MHXYSupport.Tasks.SM.Main();
+        if (task == MHTask.DBT.GetDescription()) return new MHXYSupport.Tasks.BT.DMain();
+        if (task == MHTask.WBT.GetDescription()) return new MHXYSupport.Tasks.BT.WMain();
+        if (task == MHTask.YB.GetDescription()) return new MHXYSupport.Tasks.YB.Main();
+        if (task == MHTask.ZG.GetDescription()) return new MHXYSupport.Tasks.ZG.Main();
+        if (task == MHTask.JYL.GetDescription()) return new MHXYSupport.Tasks.JYL.Main();
+        if (task == MHTask.BPRW.GetDescription()) return new MHXYSupport.Tasks.BPRW.Main();
+        if (task == MHTask.SJQY.GetDescription()) return new MHXYSupport.Tasks.SJQY.Main();
+        if (task == MHTask.JJC.GetDescription()) return new MHXYSupport.Tasks.JJC.Main();
+        if (task == MHTask.MJXY.GetDescription()) return new MHXYSupport.Tasks.MJXY.Main();
 
         throw new NotImplementedException();
     }

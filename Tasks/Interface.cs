@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-namespace MHXYWF.Tasks;
+namespace MHXYSupport.Tasks;
 
 public interface IMain
 {

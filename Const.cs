@@ -1,4 +1,4 @@
-﻿namespace MHXYWF;
+﻿namespace MHXYSupport;
 
 public class Const
 {

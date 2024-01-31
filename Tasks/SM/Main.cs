@@ -1,15 +1,15 @@
-﻿using MHXYWF.Utility;
+﻿using MHXYSupport.Utility;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 
-namespace MHXYWF.Tasks.SM;
+namespace MHXYSupport.Tasks.SM;
 
 public class Main : IMain
 {
     public async Task Run(Form1 form, Process process)
     {
         form.SetTextBoxMessage("师门 开始");
-        string imgPath = MHXYWF.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
+        string imgPath = MHXYSupport.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
         await Task.Run(() =>
         {
             form.SetTextBoxMessage("师门 进行中");

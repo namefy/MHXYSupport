@@ -1,4 +1,4 @@
-﻿namespace MHXYWF.Tasks.ZG;
+﻿namespace MHXYSupport.Tasks.ZG;
 
 public class Const
 {

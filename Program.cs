@@ -1,4 +1,4 @@
-namespace MHXYWF
+namespace MHXYSupport
 {
     internal static class Program
     {

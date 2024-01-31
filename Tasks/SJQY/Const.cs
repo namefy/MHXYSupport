@@ -1,4 +1,4 @@
-﻿namespace MHXYWF.Tasks.SJQY;
+﻿namespace MHXYSupport.Tasks.SJQY;
 
 public class Const
 {

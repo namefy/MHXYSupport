@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MHXYWF.Extensions;
+namespace MHXYSupport.Extensions;
 
 public static class StringExtension
 {

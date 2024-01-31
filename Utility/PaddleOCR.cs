@@ -4,7 +4,7 @@ using Sdcb.PaddleOCR.Models.Local;
 using Sdcb.PaddleOCR.Models;
 using Sdcb.PaddleOCR;
 
-namespace MHXYWF.Utility;
+namespace MHXYSupport.Utility;
 
 public class PaddleOCR
 {
