@@ -23,7 +23,7 @@ public class Main : IMain
                 WindowsApi.RECT rect = WindowsApi.GetPrecessRect(process);
                 var ocrResult = PaddleOCR.FindRegion(imgPath);
                 Utility.Action.ClickTargetButton(process, ocrResult
-                     ,Const.JX,Const.JRZD);
+                     ,Const.TZ,Const.JRZD);
                 var result = ocrResult.Regions.Where(p => p.Text.Contains(Tasks.Const.MJXY)
                                                         && p.Rect.Center.X >= rect.Width / 2.0)
                                             .OrderBy(p => p.Text.Length).FirstOrDefault();

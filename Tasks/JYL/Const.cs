@@ -6,7 +6,8 @@ public class Const
     public const string JYL = "经验链-";
     public const string JYRWL = "经验任务链";
     public const string LQJYRWL = "领取经验任务链";
-    public const int WaitTime = 1000;
+    public const int WaitTimeShort = 1000 * 2;
+    public const int WaitTimeMedium = 1000 * 5;
     public const int WaitTimeLong = 1000 * 10;
     public const string GM = "购买";
     public const string SJ = "上交";

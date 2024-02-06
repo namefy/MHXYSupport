@@ -21,6 +21,6 @@ public class Const
     /// <summary>
     /// 重试间隔（单位：毫秒）
     /// </summary>
-    public const int RetryInterval = 2000;
+    public const int RetryInterval = 1000 * 2;
     
 }

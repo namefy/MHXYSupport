@@ -20,8 +20,8 @@ public class Main : IMain
                 var ocrResult = PaddleOCR.FindRegion(imgPath);
                 Utility.Action.ClickTargetButton(process, ocrResult
                     ,Tasks.Const.JX, Const.SM_RW, Tasks.Const.GM,Tasks.Const.SJ, Tasks.Const.SY
-                    ,Const.SFQ,Const.SSJQ
-                    , Const.SM, Const.RC_SM);
+                    ,Const.SFQ,Const.SSJQ,Const.SXQCJ
+                    ,Const.QWC, Const.SM, Const.RC_SM);
                 var result = ocrResult.Regions.Where(p => p.Text.Contains(Const.SM)).OrderBy(p => p.Text.Length).FirstOrDefault();
                 if (result != default)
                 {

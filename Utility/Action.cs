@@ -51,7 +51,7 @@ public class Action
     /// <summary>
     /// 界面中关键字信息
     /// </summary>
-    /// <param name="progressName"></param>
+    /// <param name="process"></param>
     /// <param name="imgPath"></param>
     /// <param name="keyword"></param>
     /// <returns></returns>
@@ -75,33 +75,4 @@ public class Action
             Thread.Sleep(Const.RetryInterval);
         }
     }
-
-    /// <summary>
-    /// 界面中不含关键字
-    /// </summary>
-    /// <param name="progressName"></param>
-    /// <param name="imgPath"></param>
-    /// <param name="keyword"></param>
-    /// <returns></returns>
-    public static bool FindNoKeyword(Process process, string imgPath, string keyword)
-    {
-        int i = 0;
-        while (true)
-        {
-            WindowsApi.Screenshot(process, imgPath, ImageFormat.Jpeg);
-            var ocrResult = PaddleOCR.FindRegion(imgPath);
-            if (ocrResult is not null && !ocrResult.Text.Contains(keyword))
-            {
-                return true;
-            }
-            i++;
-            if (i == Const.RetryCount)
-            {
-                Console.WriteLine($"{keyword} exist");
-                return false;
-            }
-            Thread.Sleep(Const.RetryInterval);
-        }
-    }
-
 }

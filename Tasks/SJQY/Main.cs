@@ -25,21 +25,21 @@ public class Main : IMain
         await Task.Run(() =>
         {
             Regex regex = new(@"(?<=第)\d+(?=题)");
-            Regex regex2 = new(@"(?<=：)\S+?(?=[？|（]{1})");
-            int i = 1;
+            Regex regex2 = new(@"(?<=：)\S+?(?=[？|（|]{1})");
             while (true)
             {
                 WindowsApi.Screenshot(process, imgPath, ImageFormat.Jpeg);
                 var ocrResult = PaddleOCR.FindRegion(imgPath);
+                if (ocrResult.Text.Contains(Const.EndKeyword)) return;
                 if (!regex.IsMatch(ocrResult.Text)) continue;
                 string fullTopic = ocrResult.Regions.Where(p => regex.IsMatch(p.Text)).OrderBy(p => p.Text.Length).First().Text;
                 string topic = regex2.Match(fullTopic).Value;
                 if (!topicDic.TryGetValue(topic, out var answers))
                 {
                     form.AppendTextBoxMessage($"{topic} 题库不存在 {Environment.NewLine} {Const.WaitSeconds}秒后重新加载题库");
+                    Thread.Sleep(1000 * Const.WaitSeconds);
                     topicStr = File.ReadAllText(Const.TopFilePath);
                     topicDic = topicStr.ToEntity<Dictionary<string, string[]>>();
-                    Thread.Sleep(1000 * Const.WaitSeconds);
                     continue;
                 }
                 List<string> answered = new();
@@ -60,8 +60,6 @@ public class Main : IMain
                     Thread.Sleep(1000);
                     if (answered.Count == answers.Length) break;
                 }
-                if (i == Const.TopicCount) break;
-                i++;
             }
         });
         form.AppendTextBoxMessage("三界奇缘 结束");

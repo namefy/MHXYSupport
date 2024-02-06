@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace MHXYSupport.Utility;
 
@@ -340,7 +341,8 @@ public partial class WindowsApi
     /// <param name="point">坐标</param>
     public static void MouseMove(OpenCvSharp.Point point)
     {
-        _ = mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, point.X * 65536 / 3440, point.Y * 65536 / 1440, 0, 0);
+        Rectangle rectangle = Screen.PrimaryScreen.Bounds;
+        _ = mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, point.X * 65536 / rectangle.Width, point.Y * 65536 / rectangle.Height, 0, 0);
     }
 
     /// <summary>

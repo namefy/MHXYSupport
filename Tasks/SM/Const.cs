@@ -9,4 +9,5 @@ public class Const
     public const string SM_RW = "师门任务";
     public const string SFQ = "师父请";
     public const string SSJQ = "束手就擒";
+    public const string SXQCJ = "首席请赐教";
 }

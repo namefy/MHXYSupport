@@ -22,10 +22,12 @@ public class Main : IMain
                 WindowsApi.Screenshot(process, imgPath, ImageFormat.Jpeg);
                 WindowsApi.RECT rect = WindowsApi.GetPrecessRect(process);
                 var ocrResult = PaddleOCR.FindRegion(imgPath);
+                if (ocrResult.Text.Contains(Const.EndKeyword)) break;
                 Utility.Action.ClickTargetButton(process, ocrResult
                     , Const.ZLYL
-                     , Const.QL, Const.BH, Const.ZQ, Const.XW);
-                Thread.Sleep(Tasks.Const.RetryTime);
+                    , Const.LQBPRW
+                    , Const.QL, Const.BH, Const.ZQ, Const.XW);
+                Thread.Sleep(Const.RetryTime);
             }
         });
         form.AppendTextBoxMessage("帮派任务 完成");

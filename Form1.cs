@@ -3,6 +3,7 @@ using MHXYSupport.Utility;
 using System.Diagnostics;
 using MHXYSupport.Extensions;
 
+
 namespace MHXYSupport;
 
 public partial class Form1 : Form
@@ -26,7 +27,7 @@ public partial class Form1 : Form
         this.radioButton_bprw.Text = MHTask.BPRW.GetDescription();
         this.radioButton_sjqy.Text = MHTask.SJQY.GetDescription();
         this.radioButton_jjc.Text = MHTask.JJC.GetDescription();
-        this.radioButton_mjxy.Text = MHTask.MJXY.GetDescription();
+        this.radioButton_mjxy.Text = MHTask.MJXY.GetDescription();        
     }
 
     private static Tasks.IMain CreateTaskInstance(string task)

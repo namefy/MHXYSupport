@@ -1,4 +1,5 @@
 ﻿using MHXYSupport.Utility;
+using Microsoft.VisualBasic.Devices;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
@@ -9,6 +10,7 @@ public class Main : IMain
 {
     public async Task Run(Form1 form, Process process)
     {
+        WindowsApi.RECT procRect = WindowsApi.GetPrecessRect(process);
         string imgPath = MHXYSupport.Const.ScreenshotDirectory + $"{process.Id}_{Const.ScreenshotName}";
         bool success = false;
         #region 领取
@@ -25,43 +27,37 @@ public class Main : IMain
         #region 跑环
         form.SetTextBoxMessage("经验链 开始");
         Regex regex = new(@"\d+");
-        bool isLast = false;
-        while (true)
+        await Task.Run(() =>
         {
-            WindowsApi.Screenshot(process, imgPath, ImageFormat.Jpeg);
-            var ocrResult = PaddleOCR.FindRegion(imgPath);
-            success = Utility.Action.ClickTargetButton(process,ocrResult
-                , Const.JYRWL_XC, Const.JYRWL_XW, Const.GM, Const.SJ
-                , Const.JYRWL_XR
-                , Const.JYRWL_ZD, Const.KSZD);
-            if (success)
+            while (true)
             {
-                await Task.Delay(Const.WaitTime);
-                continue;
-            }
-            success = Utility.Action.ClickTargetButton(process, ocrResult, Const.JYL);
-            if (success)
-            {
-                var region = ocrResult.Regions.Where(p => p.Text.Contains(Const.JYL)).OrderBy(p => p.Text.Length).First();
-                form.AppendTextBoxMessage(region.Text);
-                if (regex.Match(region.Text).Value == "200")
-                {
-                    isLast = true;
-                }
-                await Task.Delay(Const.WaitTimeLong);
-                continue;
-            }
-            if (isLast)
-            {
-                success = Utility.Action.FindNoKeyword(process, imgPath, Const.JYL);
+                procRect = WindowsApi.GetPrecessRect(process);
+                WindowsApi.Screenshot(process, imgPath, ImageFormat.Jpeg);
+                var ocrResult = PaddleOCR.FindRegion(imgPath);
+                success = Utility.Action.ClickTargetButton(process, ocrResult
+                    , Const.KSZD
+                    , Const.JYRWL_XC, Const.JYRWL_XW, Const.JYRWL_XR, Const.JYRWL_ZD
+                    , Const.GM, Const.SJ);
                 if (success)
                 {
-                    form.AppendTextBoxMessage("跑环 完成");
-                    return;
+                    Thread.Sleep(Const.WaitTimeShort);
+                    continue;
                 }
+                var region = ocrResult.Regions.Where(p => p.Text.Contains(Const.JYL)
+                                                        && p.Rect.Center.X > procRect.X / 2.0)
+                                            .OrderBy(p => p.Text.Length)
+                                            .FirstOrDefault();
+                if (region != default)
+                {
+                    WindowsApi.MouseLeftClick(new OpenCvSharp.Point(procRect.X + region.Rect.Center.X, procRect.Y + region.Rect.Center.Y));
+                    form.AppendTextBoxMessage(region.Text);
+                    Thread.Sleep(Const.WaitTimeMedium);
+                    continue;
+                }
+                Thread.Sleep(Const.WaitTimeLong);
             }
+        });
 
-        }
         #endregion
     }
 }
